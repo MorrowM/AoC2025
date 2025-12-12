@@ -30,11 +30,7 @@ def solve(lights, buttons, joltages):
     light_states = [[False] * len(lights)]
     while lights not in light_states:
         step += 1
-        new_light_states = []
-        for light in light_states:
-            for button in buttons:
-                new_light_states.append(press_button(light, button))
-        light_states = new_light_states
+        light_states = [press_button(light, button) for light in light_states for button in buttons]
     return step
 
 
